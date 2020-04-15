@@ -1,5 +1,6 @@
 const stepOfMsec = 100;
 let speedRatio = 1;
+let maximumValue;
 
 let playTimeSlider;
 
@@ -19,13 +20,13 @@ function InitSlider(matchDurationMilliSeconds, allPhase) {
 
     const speedRatioSlider = document.getElementById('slider-magnification');
     noUiSlider.create(speedRatioSlider, {
-        start: [0],
+        start: [6],
         step: 1,
         tooltips: [true],
         format: {to: toRatiosFormat, from: Number},
         range: {
             'min': 1,
-            'max': 6
+            'max': 12
         }
     });
 
@@ -44,10 +45,17 @@ function InitSlider(matchDurationMilliSeconds, allPhase) {
     speedRatioSlider.noUiSlider.on('update.one', function (values, handle, rawValues) {
         speedRatio = Math.round(rawValues)
         console.log(speedRatio)
+        updateTimer()
     });
 
     document.getElementById('play-button').addEventListener('click', function () {
-        console.log(this.firstElementChild)
+        // console.log(this.firstElementChild)
+        if (this.firstElementChild.classList.contains('fi-play')) {
+            startTimer()
+        } else if (this.firstElementChild.classList.contains('fi-pause')) {
+            stopTimer()
+        }
+
         this.firstElementChild.classList.toggle('fi-play')
         this.firstElementChild.classList.toggle('fi-pause')
     });
@@ -61,7 +69,8 @@ function InitSlider(matchDurationMilliSeconds, allPhase) {
     })
 
     // init set slider position
-    setTimeOnSlider(playTimeSlider.noUiSlider.options.range.max)
+    maximumValue = playTimeSlider.noUiSlider.options.range.max;
+    setTimeOnSlider(maximumValue)
 }
 
 function setTimeOnSlider(msSinceEpoch) {

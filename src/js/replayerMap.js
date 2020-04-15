@@ -15,7 +15,7 @@ function removeTrackingLine(num) {
         member.graphics.geometry.invalidate();
         member.circleGraphics.visible = false;
         member.basicText.visible = false;
-        console.log(member)
+        // console.log(member)
     })
 }
 
@@ -32,7 +32,7 @@ function drawTrackingLine(num) {
         member.graphics.geometry.invalidate();
         member.circleGraphics.visible = true;
         member.basicText.visible = true;
-        console.log(member)
+        // console.log(member)
     })
 }
 
