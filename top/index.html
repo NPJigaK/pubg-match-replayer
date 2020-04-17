@@ -2,78 +2,79 @@
 <html lang="jp">
 
 <head>
-    <style type="text/css">
+  <style type="text/css">
 
-    </style>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    <script type="text/javascript" src="../src/js/top.js"></script>
-    <script type="text/javascript" src="../src/js/util.js"></script>
-    <script type="text/javascript" src="../src/js/pubgCommons.js"></script>
-    <link rel="stylesheet" href="../src/css/top.css">
-    <link rel="stylesheet" href="../src/css/main.css">
+  </style>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport">
+  <script src="../src/js/top.js" type="text/javascript"></script>
+  <script src="../src/js/util.js" type="text/javascript"></script>
+  <script src="../src/js/pubgCommons.js" type="text/javascript"></script>
+  <link href="../src/css/top.css" rel="stylesheet">
+  <link href="../src/css/main.css" rel="stylesheet">
 
-    <title>pubg match replayer</title>
+  <title>pubg match replayer</title>
 </head>
 
 <body>
 <div class="root">
-    <div class="index">
-        <div class="page">
-            <div class="header">
-                <!--None for now. Future support.-->
-            </div>
-            <div class="main">
-                <div class="search">
-                    <form class="searchForm" name="searchform">
-                        <select class="searchRegion" name="region">
-                            <option value="steam">Steam</option>
-                            <option value="psn">PlayStation</option>
-                            <option value="console">console</option>
-                            <option value="xbox">Xbox</option>
-                            <option value="kakao">Kakao</option>
-                            <div class="searchRegionArrow"></div>
-                        </select>
-                        <input class="searchInput" id="HomeSearchInput" type="text" name="search"
-                               placeholder="PUBG NAME" value>
-                        <input class="searchButton" type="submit" value="search" onclick="clickSearchButton()">
-                    </form>
-                    <div class="searchForm">
-                        <div>※At least one is required</div>
-                        <br>
-                        <input class="searchInput" id="ApiKeyInput" type="text" placeholder="PUBG API KEY" value>
-                        <input class="searchButton" type="button" value="Add" onclick="clickAddApiKeyButton()">
-                    </div>
-                    <div class="apiKeys">
-                        <table id="ApiKeys">
-                            <tbody>
-                            <tr>
-                                <th colspan="3">API KEY</th>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+  <div class="index">
+    <div class="page">
+      <div class="header">
+        <!--None for now. Future support.-->
+      </div>
+      <div class="main">
+        <div class="search">
+          <form class="searchForm" name="searchform">
+            <select class="searchRegion" name="region">
+              <option value="steam">Steam</option>
+              <option value="psn">PlayStation</option>
+              <option value="console">console</option>
+              <option value="xbox">Xbox</option>
+              <option value="kakao">Kakao</option>
+              <div class="searchRegionArrow"></div>
+            </select>
+            <input class="searchInput" id="HomeSearchInput" name="search" placeholder="PUBG NAME"
+                   type="text" value>
+            <input class="searchButton" onclick="clickSearchButton()" type="submit" value="search">
+          </form>
+          <div class="searchForm">
+            <div>※At least one is required</div>
+            <br>
+            <input class="searchInput" id="ApiKeyInput" placeholder="PUBG API KEY" type="text"
+                   value>
+            <input class="searchButton" onclick="clickAddApiKeyButton()" type="button" value="Add">
+          </div>
+          <div class="apiKeys">
+            <table id="ApiKeys">
+              <tbody>
+              <tr>
+                <th colspan="3">API KEY</th>
+              </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+      </div>
     </div>
-    <div id="stage-parent" style="margin: 0px 200px">
-        <div id="container"></div>
-    </div>
+  </div>
+  <div id="stage-parent" style="margin: 0px 200px">
+    <div id="container"></div>
+  </div>
 </div>
 <script>
-    window.onload = async function () {
-        /* Get api key list from localStorage and reflect */
-        let table = document.getElementById("ApiKeys");
-        let apiKeyList = JSON.parse(window.localStorage.getItem(API_KEY_LIST_KEY));
-        if (apiKeyList != null) {
-            for (let i = 0; i < apiKeyList.length; i++) {
-                insertRow(table, apiKeyList[i].APIKEY_KEY, apiKeyList[i].CURRENT_TIME_KEY);
-            }
-        } else {
-            window.localStorage.setItem(API_KEY_LIST_KEY, JSON.stringify([]));
-        }
-    };
+  window.onload = async function () {
+    /* Get api key list from localStorage and reflect */
+    let table = document.getElementById("ApiKeys");
+    let apiKeyList = JSON.parse(window.localStorage.getItem(API_KEY_LIST_KEY));
+    if (apiKeyList != null) {
+      for (let i = 0; i < apiKeyList.length; i++) {
+        insertRow(table, apiKeyList[i].APIKEY_KEY, apiKeyList[i].CURRENT_TIME_KEY);
+      }
+    } else {
+      window.localStorage.setItem(API_KEY_LIST_KEY, JSON.stringify([]));
+    }
+  };
 </script>
 </body>
 

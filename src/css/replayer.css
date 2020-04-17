@@ -1,8 +1,8 @@
 body {
-    min-width: 800px;
-    max-width: 1300px;
+  min-width: 800px;
+  max-width: 1300px;
 
-    margin: 100px auto;
+  margin: 100px auto;
 }
 
 /*main {*/
@@ -10,199 +10,199 @@ body {
 /*}*/
 
 .parent {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
 }
 
 .parent:before {
-    content: "";
-    display: block;
-    padding-top: 100%;
+  content: "";
+  display: block;
+  padding-top: 100%;
 }
 
 .child {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 /*Player List */
 .playerList {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 593px;
-    padding-right: 10px;
-    grid-column: 1 / auto;
-    grid-row: 2 / auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 593px;
+  padding-right: 10px;
+  grid-column: 1 / auto;
+  grid-row: 2 / auto;
 }
 
 .dataArrangement {
-    text-align: center;
-    font-size: 1.1rem;
-    font-weight: 400;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 400;
 }
 
 .team {
-    list-style-type: none;
-    font-size: 1.1rem;
-    font-weight: 400;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(221, 221, 221);
-    border-image: initial;
-    border-radius: 4px;
-    margin: 5px 0px;
-    padding: 4px;
-    background: rgb(250, 250, 250);
+  list-style-type: none;
+  font-size: 1.1rem;
+  font-weight: 400;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(221, 221, 221);
+  border-image: initial;
+  border-radius: 4px;
+  margin: 5px 0px;
+  padding: 4px;
+  background: rgb(250, 250, 250);
 }
 
 .player {
-    cursor: pointer;
-    display: grid;
-    grid-template-columns: 23px 1fr 22px 37px;
-    margin: 0px;
-    overflow: hidden;
-    grid-column-gap: 5px;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 23px 1fr 22px 37px;
+  margin: 0px;
+  overflow: hidden;
+  grid-column-gap: 5px;
 }
 
 .playerNumber {
-    text-align: center;
-    border-radius: 50%;
+  text-align: center;
+  border-radius: 50%;
 }
 
 .playerName {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .killAndDamage {
-    text-align: right;
+  text-align: right;
 }
 
 .clickTeam {
-    background-color: rgba(38, 166, 154, 0.2);
+  background-color: rgba(38, 166, 154, 0.2);
 }
 
 ul {
-    display: block;
-    list-style: circle inside;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
+  display: block;
+  list-style: circle inside;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
 }
 
 /*slider */
 .noUi-connect {
-    background: rgba(255, 0, 0, 0.5);
+  background: rgba(255, 0, 0, 0.5);
 }
 
 .noUi-horizontal .noUi-handle, .noUi-vertical .noUi-handle {
-    background: rgba(255, 0, 0, 0.5);
+  background: rgba(255, 0, 0, 0.5);
 }
 
 .noUi-target.noUi-horizontal .noUi-tooltip {
-    background: rgba(255, 0, 0, 0.5);
+  background: rgba(255, 0, 0, 0.5);
 }
 
 .slider-component {
-    grid-template-columns: 0px 1fr max-content;
-    margin-top: 10px;
-    margin-bottom: 0px;
-    grid-row: 2 / auto;
-    display: grid;
+  grid-template-columns: 0px 1fr max-content;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  grid-row: 2 / auto;
+  display: grid;
 }
 
 .left-slider {
-    grid-column: 2 / auto;
-    position: relative;
+  grid-column: 2 / auto;
+  position: relative;
 }
 
 .replay-slider {
-    padding-top: 5px;
-    margin-top: 12px;
+  padding-top: 5px;
+  margin-top: 12px;
 }
 
 .no-ui-slider, .no-ui-slider * {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .no-ui-slider {
-    position: relative;
-    height: 14px;
-    padding: 5px 0;
-    width: 100%;
-    border-radius: 6px;
-    -ms-touch-action: none;
-    touch-action: none;
-    z-index: 10;
+  position: relative;
+  height: 14px;
+  padding: 5px 0;
+  width: 100%;
+  border-radius: 6px;
+  -ms-touch-action: none;
+  touch-action: none;
+  z-index: 10;
 }
 
 .sub-left-slider {
-    font-size: 2rem;
-    width: 25px;
-    height: 38px;
-    padding: 0px;
-    border-width: 0px;
-    border-style: initial;
-    border-color: initial;
-    border-image: initial;
-    margin: 0px 10px;
-    grid-column: 1 / auto;
+  font-size: 2rem;
+  width: 25px;
+  height: 38px;
+  padding: 0px;
+  border-width: 0px;
+  border-style: initial;
+  border-color: initial;
+  border-image: initial;
+  margin: 0px 10px;
+  grid-column: 1 / auto;
 }
 
 .sub-right-slider {
-    position: relative;
-    margin-right: 10px;
-    grid-column: 2 / auto;
+  position: relative;
+  margin-right: 10px;
+  grid-column: 2 / auto;
 }
 
 .ratio-slider {
-    padding-top: 5px;
-    margin-top: 12px;
-    padding-left: 10px;
-    min-width: 80px;
+  padding-top: 5px;
+  margin-top: 12px;
+  padding-left: 10px;
+  min-width: 80px;
 }
 
 .right-slider {
-    display: grid;
-    grid-column: 3 / auto;
+  display: grid;
+  grid-column: 3 / auto;
 }
 
 .skip-phase {
-    position: absolute;
-    top: 23px;
-    margin-left: -6px;
-    width: 16px;
-    text-align: center;
-    height: 10px;
-    cursor: pointer;
-    background: linear-gradient(to right, transparent 0%, transparent calc(50% - 0.41px), rgb(177, 32, 32) calc(50% - 0.8px), rgb(177, 32, 32) calc(50% + 0.8px), transparent calc(50% + 0.41px), transparent 100%);
+  position: absolute;
+  top: 23px;
+  margin-left: -6px;
+  width: 16px;
+  text-align: center;
+  height: 10px;
+  cursor: pointer;
+  background: linear-gradient(to right, transparent 0%, transparent calc(50% - 0.41px), rgb(177, 32, 32) calc(50% - 0.8px), rgb(177, 32, 32) calc(50% + 0.8px), transparent calc(50% + 0.41px), transparent 100%);
 }
 
 .screenshot {
-    width: 1.5rem;
-    height: 1.5rem;
-    position: absolute;
-    color: white;
-    line-height: 1rem;
-    font-size: 1rem;
-    font-weight: 300;
-    top: 13px;
-    right: 13px;
-    background: rgba(119, 119, 119, 0.88);
-    margin: 0px;
-    padding: 0px 0px 0px 1px;
-    border-radius: 0px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(136, 136, 136);
-    border-image: initial;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  color: white;
+  line-height: 1rem;
+  font-size: 1rem;
+  font-weight: 300;
+  top: 13px;
+  right: 13px;
+  background: rgba(119, 119, 119, 0.88);
+  margin: 0px;
+  padding: 0px 0px 0px 1px;
+  border-radius: 0px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(136, 136, 136);
+  border-image: initial;
 }
