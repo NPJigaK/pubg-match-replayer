@@ -64,7 +64,7 @@ function InitSlider(matchDurationMilliSeconds, allPhase) {
     let leftSlider = document.getElementsByClassName("left-slider")[0]
     _.forEach(allPhase, phase => {
         // ToDo 何故か element の value が取得できないから、直接 phase.msSinceEpoch 代入してる
-        let obj = `<div class="skip-phase" style="left: ${(phase.msSinceEpoch / matchDurationMilliSeconds) * 100}%;" onclick="setTimeOnSlider('${phase.msSinceEpoch}')"></div>`;
+        let obj = `<div class="skip-phase" style="left: ${(phase.msSinceEpoch / matchDurationMilliSeconds) * 100}%;z-index: 10" onclick="setTimeOnSlider('${phase.msSinceEpoch}')"></div>`;
         leftSlider.insertAdjacentHTML('beforeend', obj);
     })
 
