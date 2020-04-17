@@ -186,7 +186,8 @@ function setFlightPath(flightPath) {
     endTriangle.scale.x = endTriangle.scale.y = 0.05 / worldScale;
     endTriangle.x = lastLocation.x;
     endTriangle.y = lastLocation.y;
-    endTriangle.pivot.x = endTriangle.pivot.y = 400;
+    //endTriangle.pivot.x = endTriangle.pivot.y = 400;
+    endTriangle.anchor.set(0.5);
     endTriangle.rotation = getDegree(firstLocation.x, firstLocation.y, lastLocation.x, lastLocation.y)
     // console.log(getDegree(firstLocation.x, firstLocation.y, lastLocation.x, lastLocation.y))
     flightPathContainer.addChild(endTriangle);
@@ -340,5 +341,5 @@ function takeScreenshot() {
 function getDegree(x1, y1, x2, y2) {
     const radian = Math.atan2(y2 - y1, x2 - x1);
     const degree = radian * (180 / Math.PI);
-    return degree;
+    return radian + 1.5708;
 }
