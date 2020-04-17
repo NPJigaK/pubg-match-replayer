@@ -2,136 +2,141 @@
 <html lang="jp">
 
 <head>
-    <style type="text/css">
+  <style type="text/css">
 
-    </style>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  </style>
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport">
 
-    <title>PUBG Match Replayer</title>
+  <title>PUBG Match Replayer</title>
 
-    <!--My lib-->
-    <script type="text/javascript" src="../src/js/replayer.js"></script>
-    <script type="text/javascript" src="../src/js/replayerMap.js"></script>
-    <script type="text/javascript" src="../src/js/replayerSlider.js"></script>
-    <script type="text/javascript" src="../src/js/replayerPlayerList.js"></script>
-    <script type="text/javascript" src="../src/js/replayerTimer.js"></script>
-    
-    <!--API Data analysis lib-->
-    <script type="text/javascript" src="../src/models/Match.js"></script>
-    <script type="text/javascript" src="../src/models/Telemetry.parser.js"></script>
-    <script type="text/javascript" src="../src/models/Telemetry.js"></script>
+  <!--My lib-->
+  <script src="../src/js/replayer.js" type="text/javascript"></script>
+  <script src="../src/js/replayerMap.js" type="text/javascript"></script>
+  <script src="../src/js/replayerSlider.js" type="text/javascript"></script>
+  <script src="../src/js/replayerPlayerList.js" type="text/javascript"></script>
+  <script src="../src/js/replayerTimer.js" type="text/javascript"></script>
 
-    <!--Other lib-->
-    <script type="text/javascript" src="../src/js/util.js"></script>
-    <script type="text/javascript" src="../src/js/pubgCommons.js"></script>
+  <!--API Data analysis lib-->
+  <script src="../src/models/Match.js" type="text/javascript"></script>
+  <script src="../src/models/Telemetry.parser.js" type="text/javascript"></script>
+  <script src="../src/models/Telemetry.js" type="text/javascript"></script>
 
-    <!--External lib-->
-    <script type="text/javascript" src="../src/lib/lodash.js"></script>
-    <script type="text/javascript" src="../src/lib/moment.min.js"></script>
+  <!--Other lib-->
+  <script src="../src/js/util.js" type="text/javascript"></script>
+  <script src="../src/js/pubgCommons.js" type="text/javascript"></script>
 
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" src="../src/lib/customized_nouislider.js"></script>
-    <link rel="stylesheet" href="../src/lib/customized_nouislider.css">
+  <!--External lib-->
+  <script src="../src/lib/lodash.js" type="text/javascript"></script>
+  <script src="../src/lib/moment.min.js" type="text/javascript"></script>
 
-    <!--WebGL lib-->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.2.1/pixi.min.js"></script>
-    <script type="text/javascript"
-            src="https://cdn.jsdelivr.net/npm/pixi-viewport@4.10.0/dist/viewport.min.js"></script>
+  <!-- Compiled and minified CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        rel="stylesheet">
+  <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="../src/lib/customized_nouislider.js" type="text/javascript"></script>
+  <link href="../src/lib/customized_nouislider.css" rel="stylesheet">
 
-    <!--CSS-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-switch@2.0.0/dist/css/bulma-switch.min.css">
-    <link rel="stylesheet" href="../src/css/replayer.css">
+  <!--WebGL lib-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.2.1/pixi.min.js"
+          type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pixi-viewport@4.10.0/dist/viewport.min.js"
+          type="text/javascript"></script>
 
-    <!--Icons-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css">
+  <!--CSS-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.0/css/bulma.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bulma-switch@2.0.0/dist/css/bulma-switch.min.css"
+        rel="stylesheet">
+  <link href="../src/css/replayer.css" rel="stylesheet">
 
-    <style>
+  <!--Icons-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css"
+        rel="stylesheet">
 
-    </style>
+  <style>
+
+  </style>
 </head>
 
 <body>
 <main class="columns is-mobile">
-    <div class="column is-7">
-        <div class="slider-component">
-            <div class="left-slider">
-                <div class="no-ui-slider replay-slider">
-                    <div id="slider-play-time"></div>
-                </div>
-            </div>
-            <div class="right-slider">
-                <div>
-                    <button class="button sub-left-slider" type="submit" id="play-button"
-                            style="background-color: white">
-                        <i class="fi-play"
-                           style="height: 38px; display: flex; justify-content: center; align-items: center;"></i>
-                    </button>
-                </div>
-                <div class="sub-right-slider">
-                    <div class="no-ui-slider ratio-slider">
-                        <div id="slider-magnification"></div>
-                    </div>
-                </div>
-            </div>
+  <div class="column is-7">
+    <div class="slider-component">
+      <div class="left-slider">
+        <div class="no-ui-slider replay-slider">
+          <div id="slider-play-time"></div>
         </div>
-        <section class="parent box media section-padding-large">
-            <div class="child" id="#pixiContainer"></div>
-            <button class="screenshot" onclick="takeScreenshot()"><i class="fi-camera"></i></button>
-        </section>
+      </div>
+      <div class="right-slider">
+        <div>
+          <button class="button sub-left-slider" id="play-button" style="background-color: white"
+                  type="submit">
+            <i class="fi-play"
+               style="height: 38px; display: flex; justify-content: center; align-items: center;"></i>
+          </button>
+        </div>
+        <div class="sub-right-slider">
+          <div class="no-ui-slider ratio-slider">
+            <div id="slider-magnification"></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="submenu column is-5">
-        <div class="field is-grouped is-grouped-left">
-            <div class="control">
-                <input id="switchOutlined1" type="checkbox" name="switch-tool"
-                       class="switch is-outlined is-success is-medium" checked="checked" value="1">
-                <label for="switchOutlined1" style="white-space: nowrap;">Landing Location</label>
-            </div>
-            <div class="control">
-                <input id="switchOutlined2" type="checkbox" name="switch-tool"
-                       class="switch is-outlined is-success is-medium" value="2">
-                <label for="switchOutlined2" style="white-space: nowrap;">Replay</label>
-            </div>
-        </div>
-        <div class="field is-grouped is-grouped-left">
-            <div class="control">
-                <input id="switch-flight-path" type="checkbox" name="switch"
-                       class="switch is-rounded is-outlined is-success" checked="checked">
-                <label for="switch-flight-path" style="white-space: nowrap;">Flight Path</label>
-            </div>
-            <div class="control">
-                <input id="switch-phase-circle" type="checkbox" name="switch"
-                       class="switch is-rounded is-outlined is-success" checked="checked">
-                <label for="switch-phase-circle" style="white-space: nowrap;">Phase Circle</label>
-            </div>
-        </div>
-        <div class="field is-grouped is-grouped-left">
-            <div class="control">
-                <input id="switch-is-dead" type="checkbox" name="switch-replay-mode"
-                       class="switch is-rounded is-outlined is-danger" checked="checked" disabled
-                       onclick="document.getElementById('switch-tracking-line').checked = false;
-                                document.getElementById('switch-tracking-line').onchange();">
-                <label for="switch-is-dead" style="white-space: nowrap;">isDead</label>
-            </div>
-            <div class="control">
-                <input id="switch-tracking-line" type="checkbox" name="switch-replay-mode"
-                       class="switch is-rounded is-outlined is-success" disabled
-                       onclick="document.getElementById('switch-is-dead').checked = false;
-                                document.getElementById('switch-is-dead').onchange();">
-                <label for="switch-tracking-line" style="white-space: nowrap;">Tracking Line</label>
-            </div>
-        </div>
-        <div class="playerList">
-            <div class="dataArrangement">Number / Name / Kills / Damage</div>
-        </div>
+    <section class="parent box media section-padding-large">
+      <div class="child" id="#pixiContainer"></div>
+      <button class="screenshot" onclick="takeScreenshot()"><i class="fi-camera"></i></button>
+    </section>
+  </div>
+  <div class="submenu column is-5">
+    <div class="field is-grouped is-grouped-left">
+      <div class="control">
+        <input checked="checked" class="switch is-outlined is-success is-medium" id="switchOutlined1"
+               name="switch-tool" type="checkbox" value="1">
+        <label for="switchOutlined1" style="white-space: nowrap;">Landing Location</label>
+      </div>
+      <div class="control">
+        <input class="switch is-outlined is-success is-medium" id="switchOutlined2" name="switch-tool"
+               type="checkbox" value="2">
+        <label for="switchOutlined2" style="white-space: nowrap;">Replay</label>
+      </div>
     </div>
+    <div class="field is-grouped is-grouped-left">
+      <div class="control">
+        <input checked="checked" class="switch is-rounded is-outlined is-success" id="switch-flight-path"
+               name="switch" type="checkbox">
+        <label for="switch-flight-path" style="white-space: nowrap;">Flight Path</label>
+      </div>
+      <div class="control">
+        <input checked="checked" class="switch is-rounded is-outlined is-success" id="switch-phase-circle"
+               name="switch" type="checkbox">
+        <label for="switch-phase-circle" style="white-space: nowrap;">Phase Circle</label>
+      </div>
+    </div>
+    <div class="field is-grouped is-grouped-left">
+      <div class="control">
+        <input checked="checked" class="switch is-rounded is-outlined is-danger" disabled
+               id="switch-is-dead" name="switch-replay-mode" onclick="document.getElementById('switch-tracking-line').checked = false;
+                                document.getElementById('switch-tracking-line').onchange();"
+               type="checkbox">
+        <label for="switch-is-dead" style="white-space: nowrap;">isDead</label>
+      </div>
+      <div class="control">
+        <input class="switch is-rounded is-outlined is-success" disabled id="switch-tracking-line"
+               name="switch-replay-mode" onclick="document.getElementById('switch-is-dead').checked = false;
+                                document.getElementById('switch-is-dead').onchange();"
+               type="checkbox">
+        <label for="switch-tracking-line" style="white-space: nowrap;">Tracking Line</label>
+      </div>
+    </div>
+    <div class="playerList">
+      <div class="dataArrangement">Number / Name / Kills / Damage</div>
+    </div>
+  </div>
 </main>
 </body>
 
 <script>
-    initReplayer()
+  initReplayer()
 </script>
 </html>
