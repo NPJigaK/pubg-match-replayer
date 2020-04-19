@@ -6,6 +6,8 @@ let _finalRoster;
 let isDeadFlag = true;
 let isTrackingFlag = false;
 
+let isGame;
+
 async function initReplayer() {
   const detailMatches = await JSON.parse(
       sessionStorage.getItem(`detailMatcheData`));
@@ -34,9 +36,12 @@ async function initReplayer() {
   _stateAt = stateAt;
   _finalRoster = finalRoster;
 
+  // set isGame
+  isGame = _stateAt(match.durationSeconds * 1000).isGame
+  console.log(isGame)
+
   // Initialize Team Graphics Objects
   InitTeamGraphics(_finalRoster(), _stateAt(0).playerLocations)
-  // console.log(_stateAt(match.durationSeconds * 1000))
 
   // Initialize other menu
   InitSideMenu(match, stateAt(match.durationSeconds * 1000), _finalRoster())
@@ -138,13 +143,6 @@ async function getFlightPaths(telemetryJson, mapName) {
   );
 }
 
-/**
- * Make flightPath json
- *
- * ToDo
- * @param {*} firstLocation
- * @param {*} lastLocation
- */
 function calcFirstAndEndFlightPathJson(firstLocation, lastLocation, mapSize,
     flightPathMargin) {
   const ax = firstLocation.x;
