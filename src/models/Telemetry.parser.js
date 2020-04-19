@@ -108,7 +108,7 @@ function parseTelemetry(matchData, telemetry, focusedPlayerName) {
   }
 
   { // --- Step One: Iterate through all telemetry data and store known points
-    console.time('Telemetry-eventParsing')
+    // console.time('Telemetry-eventParsing')
 
     let matchStarted = false
     let curStateInterval = 0
@@ -328,7 +328,7 @@ function parseTelemetry(matchData, telemetry, focusedPlayerName) {
       }
     })
 
-    console.timeEnd('Telemetry-eventParsing')
+    // console.timeEnd('Telemetry-eventParsing')
   }
 
   { // --- Step Two: Ensure there are no gaps in the state array
@@ -358,7 +358,7 @@ function parseTelemetry(matchData, telemetry, focusedPlayerName) {
   }
 
   { // Step Four (a): Store pointer to known left/right datapoints for player locations
-    console.time('Telemetry-locationPointers')
+    // console.time('Telemetry-locationPointers')
 
     Object.keys(playerLocations).forEach(playerName => {
       const dps = playerLocations[playerName]
@@ -383,7 +383,7 @@ function parseTelemetry(matchData, telemetry, focusedPlayerName) {
       }
     })
 
-    console.timeEnd('Telemetry-locationPointers')
+    // console.timeEnd('Telemetry-locationPointers')
   }
 
   { // Step Four (b): Store pointer to known left/right datapoints for bluezone
@@ -405,7 +405,7 @@ function parseTelemetry(matchData, telemetry, focusedPlayerName) {
   }
 
   { // Step Four (c): Copy safe/red zone points and players
-    console.time('Telemetry-playerAndZoneCopy')
+    // console.time('Telemetry-playerAndZoneCopy')
 
     for (let i = 1; i < state.length; i++) {
       if (!state[i].redzone) {
@@ -427,7 +427,7 @@ function parseTelemetry(matchData, telemetry, focusedPlayerName) {
       }
     }
 
-    console.timeEnd('Telemetry-playerAndZoneCopy')
+    // console.timeEnd('Telemetry-playerAndZoneCopy')
   }
 
   { // Step Four (d): Expand tracers across their lifetime

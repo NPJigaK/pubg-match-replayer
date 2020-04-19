@@ -57,6 +57,6 @@ function getPubgGameMode(gameMode) {
   } else if (gameMode.indexOf("squad") != -1) {
     return isESportsMode + "Squad";
   } else {
-    return "0"; // ToDo
+    return gameMode;
   }
 }

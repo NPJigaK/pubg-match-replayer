@@ -8,9 +8,20 @@ let blueZoneGraphics;
 let oldTimeMsec = 0;
 let nowTimeMsec = 0;
 
+function currentPhase(nowTime) {
+  for (let i = 1; i < isGame.allPhase.length; i++) {
+    if (isGame.allPhase[i].msSinceEpoch > nowTime) {
+      return i - 1;
+    }
+  }
+  return isGame.allPhase.length - 1
+}
+
 function removeTrackingLine(num) {
   _.forEach(teamGraphicsArr[num].member, member => {
-    member.polygon.points.length = 0;
+    _.forEach(member.polygons, polygon => {
+      polygon.points.length = 0;
+    });
     member.graphics.visible = false;
     member.graphics.geometry.invalidate();
     member.circleGraphics.visible = false;
@@ -25,7 +36,8 @@ function drawTrackingLine(num) {
       if (i > member.landingTime) {
         let stateAt = _stateAt(i);
         let location = stateAt.playerLocations[member.name];
-        member.polygon.points.push(location.x / 100, location.y / 100);
+        member.polygons[currentPhase(i)].points.push(location.x / 100,
+            location.y / 100);
       }
     }
     member.graphics.visible = true;
@@ -84,10 +96,11 @@ function updateReplayer(playTimeMsec) {
             if (nowTimeMsec > oldTimeMsec) {
               let interval = Math.round(nowTimeMsec - diff + i)
               if (interval % 500 == 0) {
-                let diffLocation = _stateAt(
-                    interval).playerLocations[member.name];
+                let diffLocation =
+                    _stateAt(interval).playerLocations[member.name];
                 if (interval > member.landingTime) {
-                  member.polygon.points.push(diffLocation.x / 100,
+                  member.polygons[currentPhase(interval)].points.push(
+                      diffLocation.x / 100,
                       diffLocation.y / 100);
                 }
                 //console.log(interval)
@@ -95,8 +108,8 @@ function updateReplayer(playTimeMsec) {
             } else if (nowTimeMsec < oldTimeMsec) {
               let interval = Math.round(nowTimeMsec + diff - i)
               if (interval % 500 == 0) {
-                member.polygon.points.pop();
-                member.polygon.points.pop();
+                member.polygons[currentPhase(interval)].points.pop();
+                member.polygons[currentPhase(interval)].points.pop();
               }
             }
           }
@@ -141,6 +154,7 @@ function setLandingLocation() {
       })
     })
     // Todo 降下地点の判定もっと綺麗にできないか？
+    // https://github.com/KagiJPN/pubg-match-replayer/issues/17
     if (i > 170000) {
       flag = true;
     }
@@ -204,6 +218,7 @@ function setFlightPath(flightPath) {
 
 function setPhaseCircle(isGame) {
   let phaseCount = 3;
+  let count = 0;
   _.forEach(isGame.allPhase, phase => {
     let phaseCircle = new PIXI.Graphics();
     let circleColor = getRandomColor();
@@ -220,6 +235,20 @@ function setPhaseCircle(isGame) {
       circleColor: circleColor,
       graphics: phaseCircle
     })
+
+    // ToDo lineStyle.color を設定している場所がよくない
+    // https://github.com/KagiJPN/pubg-match-replayer/issues/15
+    _.forEach(teamGraphicsArr, team => {
+      _.forEach(team.member, member => {
+        let polygon = new PIXI.Polygon();
+        polygon.closeStroke = false;
+        member.graphics.drawPolygon(polygon);
+        member.graphics.geometry.graphicsData[count].lineStyle.color = circleColor
+        member.polygons.push(polygon)
+      })
+    })
+
+    count++
   })
   // console.log(phaseCircleGraphicsArr)
 }
@@ -240,10 +269,6 @@ function InitTeamGraphics(roster, playerLocations) {
       viewport.addChild(graphics);
 
       let location = _.pick(playerLocations, player)[player];
-      // let polygon = new PIXI.Polygon([location.x, location.y]);
-      let polygon = new PIXI.Polygon();
-      polygon.closeStroke = false; // Do not close, we want a line!
-      graphics.drawPolygon(polygon);
 
       let circleGraphics = new PIXI.Graphics();
       circleGraphics.lineStyle(0); // draw a circle, set the lineStyle to zero so the circle doesn't have an outline
@@ -264,7 +289,7 @@ function InitTeamGraphics(roster, playerLocations) {
         name: player,
         playerNum: playerNum++,
         graphics: graphics,
-        polygon: polygon,
+        polygons: [],
         circleGraphics: circleGraphics,
         basicText: basicText,
         visible: false
@@ -339,11 +364,13 @@ function InitMap(mapName) {
     app.renderer.resize(pixi_container.clientWidth,
         pixi_container.clientHeight);
     // ToDo ズームを維持しながらリサイズしたい
+    // https://github.com/KagiJPN/pubg-match-replayer/issues/14
     viewport.fitWorld();
   }
 }
 
-// ToDo ズームを反映してスクリーンショット
+// ToDo ズームを反映した状態でスクリーンショットを取りたい
+// https://github.com/KagiJPN/pubg-match-replayer/issues/13
 function takeScreenshot() {
   app.renderer.extract.canvas(viewport).toBlob((b) => {
     const a = document.createElement('a');
