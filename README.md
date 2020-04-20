@@ -8,7 +8,7 @@ pubg-match-replayer
 
 利用推奨環境  
 ・Google chrome  
-※ **AdBlock** 系をブラウザに導入していると、正常に動作しません。
+※ **AdBlock** 系をブラウザに導入していると、正常に動作しません。  
 ※ ブラウザの設定で **WebGL** を有効化していないと、正常に動作しません。(ブラウザの設定を特にいじっていないのであれば大丈夫です)  
 ※ [WebGLの有効化設定方法](https://qiita.com/Hiroki_M/items/c93b5b642514cde556d6) をご確認ください。
 
