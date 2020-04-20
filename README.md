@@ -93,11 +93,11 @@ OFF にすると死んだ位置がMAPに表示されたままになります。
 スライダー右側のボタンを押下することで再生が開始し、もう一度押すことでストップします。  
 さらに右側のスライダーは速度倍率になります(デフォルトは6倍速)  
 ※ 下記画像を参照  
-![AutoReplay](https://raw.githubusercontent.com/KagiJPN/pubg-match-replayer/master/docs/img/replayer7.JPG)
+![AutoReplay](https://raw.githubusercontent.com/KagiJPN/pubg-match-replayer/master/docs/img/replayer7.JPG)  
 
 ##### スクリーンショット
-![screenshot](https://raw.githubusercontent.com/KagiJPN/pubg-match-replayer/master/docs/img/replayer8.JPG)
-マップ右上にあるスクリーンショットボタンを押下することで、マップ画像をダウンロードすることができます。
+![screenshot](https://raw.githubusercontent.com/KagiJPN/pubg-match-replayer/master/docs/img/replayer8.JPG)  
+マップ右上にあるスクリーンショットボタンを押下することで、マップ画像をダウンロードすることができます。  
 ※ この機能は最適化されていないため少し時間が掛かることがあります
 
 ## 最後に
