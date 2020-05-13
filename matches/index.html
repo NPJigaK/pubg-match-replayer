@@ -44,62 +44,71 @@
 <script>
 
   window.onload = async function () {
+    try {
 
-    const region = getParam("region");
-    const playerNeme = getParam("search");
-    const apiKey = getRandomApiKey(JSON.parse(window.localStorage.getItem(API_KEY_LIST_KEY)));
+      const region = getParam("region");
+      const playerNeme = getParam("search");
+      const apiKey = getRandomApiKey(JSON.parse(window.localStorage.getItem(API_KEY_LIST_KEY)));
 
-    let playersResponse = await fetch(
-        `https://api.pubg.com/shards/${region}/players?filter[playerNames]=${playerNeme}`, {
-          headers: {
-            'accept': 'application/json',
-            'Authorization': `Bearer ${apiKey.APIKEY_KEY}`
-          }
-        }, {mode: 'cors'});
+      let playersResponse = await fetch(
+          `https://api.pubg.com/shards/${region}/players?filter[playerNames]=${playerNeme}`, {
+            headers: {
+              'accept': 'application/json',
+              'Authorization': `Bearer ${apiKey.APIKEY_KEY}`
+            }
+          }, {mode: 'cors'});
+      if (!playersResponse.ok) {
+        throw new Error('There is an error in NAME or APIKEY.')
+      }
 
-    let matches = await getMatches(await playersResponse.json());
+      let matches = await getMatches(await playersResponse.json());
 
-    let detailMatches = await asyncFilter(
-        await asyncMap(matches, async id => {
-          const response = await fetch(`https://api.pubg.com/shards/${region}/matches/${id}`,
-              {headers: {'accept': 'application/json'}},
-              {mode: 'cors'}
-          );
-          return await response.json();
-        }), async detailMatch => {
-          if (detailMatch.data.attributes.matchType != "arcade"
-              && detailMatch.data.attributes.matchType != "training"
-              && detailMatch.data.attributes.mapName != "Range_Main") {
-            return detailMatch;
+      let detailMatches = await asyncFilter(
+          await asyncMap(matches, async id => {
+            const response = await fetch(`https://api.pubg.com/shards/${region}/matches/${id}`,
+                {headers: {'accept': 'application/json'}},
+                {mode: 'cors'}
+            );
+            return await response.json();
+          }), async detailMatch => {
+            if (detailMatch.data.attributes.matchType != "arcade"
+                && detailMatch.data.attributes.matchType != "training"
+                && detailMatch.data.attributes.mapName != "Range_Main") {
+              return detailMatch;
+            }
+          });
+
+      // console.log(detailMatches)
+
+      let table = document.getElementById("Matches");
+      detailMatches.map(async (value) => {
+        let winPlace = -1;
+        let kills = -1;
+        await value.included.filter(async function (value, index) {
+          if (value.type === "participant" && value.attributes.stats.name === playerNeme) {
+            winPlace = value.attributes.stats.winPlace;
+            kills = value.attributes.stats.kills;
           }
         });
 
-    // console.log(detailMatches)
+        // put focused player
+        value.focusedPlayer = playerNeme;
 
-    let table = document.getElementById("Matches");
-    detailMatches.map(async (value) => {
-      let winPlace;
-      let kills;
-      await value.included.filter(async function (value, index) {
-        if (value.type === "participant" && value.attributes.stats.name === playerNeme) {
-          winPlace = value.attributes.stats.winPlace;
-          kills = value.attributes.stats.kills;
-        }
-      });
+        await insertRow(
+            table,
+            value.data.attributes.createdAt,
+            value.data.attributes.mapName,
+            value.data.attributes.gameMode,
+            winPlace,
+            kills,
+            await JSON.stringify(value)
+        );
+      })
 
-      // put focused player
-      value.focusedPlayer = playerNeme;
-
-      await insertRow(
-          table,
-          value.data.attributes.createdAt,
-          value.data.attributes.mapName,
-          value.data.attributes.gameMode,
-          winPlace,
-          kills,
-          await JSON.stringify(value)
-      );
-    })
+    } catch (e) {
+      alert(e);
+      window.location.href = "../top"
+    }
   };
 </script>
 </body>
