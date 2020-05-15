@@ -379,7 +379,7 @@ function takeScreenshot() {
     a.href = URL.createObjectURL(b);
     a.click();
     a.remove();
-  }, 'image/png');
+  }, 'image/jpeg');
 }
 
 function getDegree(x1, y1, x2, y2) {
