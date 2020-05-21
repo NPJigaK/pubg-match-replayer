@@ -264,7 +264,7 @@ function InitTeamGraphics(roster, playerLocations) {
     }
     _.forEach(team, player => {
       let graphics = new PIXI.Graphics();
-      graphics.lineStyle(7, teamColor);
+      graphics.lineStyle(18, teamColor);
       graphics.visible = false;
       viewport.addChild(graphics);
 

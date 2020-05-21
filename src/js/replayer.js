@@ -19,6 +19,11 @@ async function initReplayer() {
   const match = matches[0];
 
   // console.log(match)
+  // use other site href
+  pubgMatchId = match.id;
+  pubgShardId = match.shardId;
+  pubgPlayerName = detailMatches.focusedPlayer;
+  pubgTelemetryUrl = match.telemetryUrl;
 
   // initialize map
   InitMap(match.mapName)

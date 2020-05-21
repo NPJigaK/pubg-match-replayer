@@ -158,3 +158,8 @@ body {
   /* ToDo */
   width: 500px;
 }
+
+.otherSiteButton {
+  float: right;
+  margin: 5px;
+}
