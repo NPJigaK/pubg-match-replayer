@@ -1,5 +1,40 @@
 const MATCH_LIST_PAGE_URL = "../matches/";
 const API_KEY_LIST_KEY = "apikeyList";
+let pubgPlayerId = "account.15cbf322a9bc45e88b0cd9f12ef4188e"; // default chocoTaco
+let pubgPlayerName = "chocoTaco"; // default chocoTaco
+let pubgMatchId;
+let pubgShardId = "steam";
+let pubgTelemetryUrl;
+
+function hrefSite(siteName) {
+  console.log(siteName)
+  if (siteName == "PUBGREPORT") {
+    window.open(`https://pubg.report/streams/${pubgPlayerId}`, '_blank');
+  } else if (siteName == 'OPGG') {
+    if (pubgShardId == "steam") {
+      window.open(`https://pubg.op.gg/user/${pubgPlayerName}`, '_blank');
+    } else {
+      window.open(`https://pubglookup.com/players/psn/${pubgPlayerName}`,
+          '_blank');
+    }
+  } else if (siteName == '3DMAPREPLAY') {
+    if (pubgShardId == "steam") {
+      pubgShardId = "pc"
+    }
+    window.open(
+        `https://pubg-replay.com/match/${pubgShardId}/${pubgMatchId}?highlight=${pubgPlayerName}`,
+        '_blank');
+  } else if (siteName == 'CHICKENDINNER') {
+    let ptu = pubgTelemetryUrl
+    .replace("https://telemetry-cdn.playbattlegrounds.com/bluehole-pubg", "")
+    .replace("-telemetry.json", "")
+    window.open(`https://minmax.gg/chickendinner${ptu}?follow=${pubgPlayerName}`, '_blank');
+  } else if (siteName == 'README') {
+    window.open(`https://kagijpn.github.io/pubg-match-replayer/`, '_blank');
+  }
+
+
+}
 
 /**Map name enum */
 const PUBG_MAPS = defineEnum({

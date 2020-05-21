@@ -206,3 +206,21 @@ ul {
   border-color: rgb(136, 136, 136);
   border-image: initial;
 }
+
+.other_site_href_btn {
+  display: block;
+  position: relative;
+  padding: 2px;
+  text-align: center;
+  text-decoration: none;
+  color: #1B1B1B;
+  background: #fff;
+  border: 1px solid #1B1B1B;
+}
+
+.other_site_href_btn:hover {
+  background: #1B1B1B;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}

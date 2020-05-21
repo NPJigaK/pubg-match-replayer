@@ -152,6 +152,7 @@ function parseTelemetry(matchData, telemetry, focusedPlayerName) {
 
       if (d._T === 'LogItemEquip') {
         const characterName = d.character.name
+        if (!characterName) return
         const currentItems = curState.players[characterName].items
 
         setNewPlayerState(characterName, {items: [...currentItems, d.item]})
@@ -159,7 +160,9 @@ function parseTelemetry(matchData, telemetry, focusedPlayerName) {
 
       if (d._T === 'LogItemUnequip') {
         const characterName = d.character.name
+        if (!characterName) return
         const currentItems = curState.players[characterName].items
+
 
         setNewPlayerState(characterName, {
           items: currentItems.filter(item => item.itemId !== d.item.itemId),
@@ -168,7 +171,9 @@ function parseTelemetry(matchData, telemetry, focusedPlayerName) {
 
       if (d._T === 'LogItemAttach') {
         const characterName = d.character.name
+        if (!characterName) return
         const currentItems = curState.players[characterName].items
+
 
         const updatedItems = currentItems.reduce((prev, item) => {
           if (item.itemId === d.parentItem.itemId) {
@@ -192,7 +197,9 @@ function parseTelemetry(matchData, telemetry, focusedPlayerName) {
 
       if (d._T === 'LogItemDetach') {
         const characterName = d.character.name
+        if (!characterName) return
         const currentItems = curState.players[characterName].items
+
 
         const updatedItems = currentItems.reduce((prev, item) => {
           if (item.itemId === d.parentItem.itemId) {

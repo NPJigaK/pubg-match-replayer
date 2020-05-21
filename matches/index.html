@@ -27,6 +27,9 @@
       </div>
       <div class="main">
         <div class="search">
+          <input class="otherSiteButton" type="button" value="PUBG.REPORT"
+                 onclick="hrefSite('PUBGREPORT')"/>
+          <input class="otherSiteButton" type="button" value="戦績チェック" onclick="hrefSite('OPGG')"/>
           <div class="matches">
             <table id="Matches">
               <tbody>
@@ -61,7 +64,13 @@
         throw new Error('There is an error in NAME or APIKEY.')
       }
 
-      let matches = await getMatches(await playersResponse.json());
+      let resJson = await playersResponse.json()
+      let matches = await getMatches(resJson);
+
+      // use other site href
+      pubgPlayerId = resJson.data[0].id;
+      pubgPlayerName = playerNeme;
+      pubgShardId = region;
 
       let detailMatches = await asyncFilter(
           await asyncMap(matches, async id => {
