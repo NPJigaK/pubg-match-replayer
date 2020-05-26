@@ -62,20 +62,43 @@ function InitSlider(matchDurationMilliSeconds, allPhase) {
     this.firstElementChild.classList.toggle('fi-pause')
   });
 
-  // create skip phase
-  let leftSlider = document.getElementsByClassName("left-slider")[0]
+  // create phase skip
+  createPhaseSkip(matchDurationMilliSeconds, allPhase);
+  // create global state skip
+  createGlobalStateSkip(matchDurationMilliSeconds);
+
+  // init set slider position
+  maximumValue = playTimeSlider.noUiSlider.options.range.max;
+  setTimeOnSlider(maximumValue)
+}
+
+function createPhaseSkip(matchDurationMilliSeconds, allPhase) {
+  let leftSlider = document.getElementsByClassName("left-slider")[0];
   _.forEach(allPhase, phase => {
-    // ToDo 何故か element の value が取得できないから、直接 phase.msSinceEpoch 代入してる
-    // https://github.com/KagiJPN/pubg-match-replayer/issues/16
+    // ToDo https://github.com/KagiJPN/pubg-match-replayer/issues/16
     let obj = `<div class="skip-phase" style="left: ${(phase.msSinceEpoch
         / matchDurationMilliSeconds)
     * 100}%;z-index: 10" onclick="setTimeOnSlider('${phase.msSinceEpoch}')"></div>`;
     leftSlider.insertAdjacentHTML('beforeend', obj);
   })
+}
 
-  // init set slider position
-  maximumValue = playTimeSlider.noUiSlider.options.range.max;
-  setTimeOnSlider(maximumValue)
+function createGlobalStateSkip(matchDurationMilliSeconds) {
+  let leftSlider = document.getElementsByClassName("left-slider")[0];
+  // console.log(_globalState.kills)
+  // ToDo https://github.com/KagiJPN/pubg-match-replayer/issues/31
+  _.forEach(_globalState.kills, kill => {
+    let obj = `<div class="skip-kills" style="left: ${(kill.msSinceEpoch
+        / matchDurationMilliSeconds)
+    * 100}%;z-index: 10" onclick="setTimeOnSlider('${kill.msSinceEpoch}')"></div>`;
+    leftSlider.insertAdjacentHTML('beforeend', obj);
+  });
+
+  let obj = `<div class="skip-death" style="left: ${(_globalState.death.msSinceEpoch
+      / matchDurationMilliSeconds)
+  * 100}%;z-index: 10" onclick="setTimeOnSlider('${_globalState.death.msSinceEpoch}')"></div>`;
+  leftSlider.insertAdjacentHTML('beforeend', obj);
+
 }
 
 function setTimeOnSlider(msSinceEpoch) {
