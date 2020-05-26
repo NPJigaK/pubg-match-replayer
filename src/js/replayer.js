@@ -101,10 +101,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     })
   }
   document.getElementById('switch-tracking-line').onchange = function () {
+    resetMap();
     isTrackingFlag = this.checked;
-    if (isTrackingFlag) {
-      resetMap();
-    }
     setReplay()
   }
   document.getElementById('switch-is-dead').onchange = function () {
