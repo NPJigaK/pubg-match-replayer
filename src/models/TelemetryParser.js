@@ -239,9 +239,11 @@ function parseTelemetry(matchData, telemetry, focusedPlayerName) {
         }
 
         if (d && d.killer && d.killer.name === focusedPlayerName) {
+          // console.log(d)
           globalState.kills.push({
             msSinceEpoch,
             victimName: d.victim.name,
+            damageCauserName: d.damageCauserName
           })
         }
       }

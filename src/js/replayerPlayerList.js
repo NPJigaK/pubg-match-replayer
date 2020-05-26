@@ -1,6 +1,8 @@
+const maxDrawTeam = 6;
+
 function clickTeam(teamElement, num) {
   if (isTrackingFlag) {
-    if (document.getElementsByClassName("clickTeam").length < 4) {
+    if (document.getElementsByClassName("clickTeam").length < maxDrawTeam) {
       teamElement.classList.toggle("clickTeam");
       if (teamElement.classList.contains("clickTeam")) {
         teamGraphicsArr[num].visible = true;

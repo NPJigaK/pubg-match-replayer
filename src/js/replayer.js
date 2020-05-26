@@ -1,6 +1,7 @@
 const t_LANDING_LOCATION = 1;
 const t_REPLAY = 2;
 let enableTool = t_LANDING_LOCATION;// 1: Landing Location, 2: Replay
+let _globalState;
 let _stateAt;
 let _finalRoster;
 let isDeadFlag = true;
@@ -34,7 +35,8 @@ async function initReplayer() {
   const {state, globalState} = parseTelemetry(match, telemetryData,
       detailMatches.focusedPlayer)
   // console.log(state)
-  // console.log(globalState)
+  // console.log(globalState);
+  _globalState = globalState;
   // console.log(match.durationSeconds * 1000)
 
   const {stateAt, finalRoster} = Telemetry(state);
@@ -43,7 +45,7 @@ async function initReplayer() {
 
   // set isGame
   isGame = _stateAt(match.durationSeconds * 1000).isGame
-  console.log(isGame)
+  // console.log(isGame)
 
   // Initialize Team Graphics Objects
   InitTeamGraphics(_finalRoster(), _stateAt(0).playerLocations)
