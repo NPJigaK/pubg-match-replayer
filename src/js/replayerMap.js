@@ -168,7 +168,13 @@ function resetMap() {
       member.circleGraphics.visible = false;
       member.basicText.visible = false;
     })
-  })
+  });
+
+  _.forEach(document.getElementsByClassName("team"), team => {
+    if (team.classList.contains("clickTeam")) {
+      team.onclick();
+    }
+  });
 }
 
 function InitMoreMap(flightPath, isGame) {
