@@ -26,6 +26,8 @@
       <div class="main">
         <div class="search">
           <form class="searchForm" name="searchform">
+            <input style="margin-right: 40%;" class="searchButton" onclick="clickTournamentButton()"
+                   type="button" value="tournament"><br>
             <select class="searchRegion" name="region">
               <option value="steam">Steam</option>
               <option value="psn">PlayStation</option>
@@ -75,6 +77,10 @@
       window.localStorage.setItem(API_KEY_LIST_KEY, JSON.stringify([]));
     }
   };
+
+  function clickTournamentButton() {
+    window.location.href = '../tournament'
+  }
 </script>
 </body>
 

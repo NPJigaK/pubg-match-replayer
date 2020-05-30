@@ -65,7 +65,9 @@ function InitSlider(matchDurationMilliSeconds, allPhase) {
   // create phase skip
   createPhaseSkip(matchDurationMilliSeconds, allPhase);
   // create global state skip
-  createGlobalStateSkip(matchDurationMilliSeconds);
+  if (_globalState.death != null) {
+    createGlobalStateSkip(matchDurationMilliSeconds);
+  }
 
   // init set slider position
   maximumValue = playTimeSlider.noUiSlider.options.range.max;
