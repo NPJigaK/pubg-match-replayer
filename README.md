@@ -6,10 +6,10 @@ pubg-match-replayer is a PC web application designed to analyze MAP information 
 You can use this tool by visiting [here](https://kagijpn.github.io/pubg-match-replayer/top/).
 
 Recommended Environment:
-- Google Chrome
-  *Note: It may not function properly if you have any AdBlock-related extensions installed in your browser.
-  *Note: It may not function properly if WebGL is not enabled in your browser settings. (If you haven't modified your browser settings, it should be fine.)
-  *Please refer to [this guide](https://qiita.com/Hiroki_M/items/c93b5b642514cde556d6) for instructions on enabling WebGL.
+- Google Chrome  
+  **Note**: It may not function properly if you have any AdBlock-related extensions installed in your browser.  
+  **Note**: It may not function properly if WebGL is not enabled in your browser settings. (If you haven't modified your browser settings, it should be fine.)  
+  Please refer to [this guide](https://qiita.com/Hiroki_M/items/c93b5b642514cde556d6) for instructions on enabling WebGL.
 
 If you are using the tool for the first time, please read the instructions below on how to use it.
 
