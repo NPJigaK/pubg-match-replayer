@@ -95,14 +95,15 @@ There are several other useful features available (more may be added in future u
 ##### Auto Replay
 You can automatically move the slider at a constant interval.
 Click the button on the right side of the slider to start playback, and click it again to stop.
-The slider on the right side controls the playback speed (default is 6x).
-*Refer to the image below:
+The slider on the right side controls the playback speed (default is 6x).  
+*Refer to the image below:  
 ![AutoReplay](https://raw.githubusercontent.com/KagiJPN/pubg-match-replayer/master/docs/img/replayer7.JPG)
 
 ##### Screenshot
+By clicking the screenshot button in the upper right corner of the map, you can download a screenshot of the map.  
+*Please note that this feature may take some time to process as it is not yet optimized.  
+*Refer to the image below:  
 ![screenshot](https://raw.githubusercontent.com/KagiJPN/pubg-match-replayer/master/docs/img/replayer8.JPG)
-By clicking the screenshot button in the upper right corner of the map, you can download a screenshot of the map.
-*Please note that this feature may take some time to process as it is not yet optimized.
 
 ## Finally
 There may be some confusing explanations.
