@@ -1,113 +1,113 @@
 pubg-match-replayer
-====
+===================
 
-本ツールは PLAYERUNKNOWN'S BATTLEGROUNDS の試合のMAP情報を分析することを目的とした、PC向けWebアプリケーションです。
+pubg-match-replayer is a PC web application designed to analyze MAP information for PLAYERUNKNOWN'S BATTLEGROUNDS matches.
 
-[こちら](https://kagijpn.github.io/pubg-match-replayer/top/)
-から本ツールを利用することが出来ます。
+You can use this tool by visiting [here](https://kagijpn.github.io/pubg-match-replayer/top/).
 
-利用推奨環境  
-・Google chrome  
-※ **AdBlock** 系をブラウザに導入していると、正常に動作しません。  
-※ ブラウザの設定で **WebGL** を有効化していないと、正常に動作しません。(ブラウザの設定を特にいじっていないのであれば大丈夫です)  
-※ [WebGLの有効化設定方法](https://qiita.com/Hiroki_M/items/c93b5b642514cde556d6) をご確認ください。
+Recommended Environment:
+- Google Chrome
+  *Note: It may not function properly if you have any AdBlock-related extensions installed in your browser.
+  *Note: It may not function properly if WebGL is not enabled in your browser settings. (If you haven't modified your browser settings, it should be fine.)
+  *Please refer to [this guide](https://qiita.com/Hiroki_M/items/c93b5b642514cde556d6) for instructions on enabling WebGL.
 
-また、初めてお使いの方は下記の[利用方法](#利用方法)をご一読ください。
+If you are using the tool for the first time, please read the instructions below on how to use it.
 
-## 利用方法
+## Usage
 
-### 試合検索ページの使い方
-[試合検索ページ](https://kagijpn.github.io/pubg-match-replayer/top/)に飛ぶとこの様な画面が出てきます。
+### How to use the Match Search page
+When you go to the [Match Search page](https://kagijpn.github.io/pubg-match-replayer/top/), you will see the following screen:
 ![search-page](https://raw.githubusercontent.com/KagiJPN/pubg-match-replayer/master/docs/img/replayer1.JPG)
 
-本ツールは **API KEY** を使います。まだ取得していない方は、[APIKEYの発行方法](#APIKEYの発行方法) から **API KEY** を取得してください。  
-- **API KEY** というところに、先ほどコピーしておいた文字列をペーストして、右側の**ADD**ボタンを押下してください。  
-- 正常に追加されると、画像のように追加した API KEY が表示されます。  
+This tool uses an **API KEY**. If you haven't obtained one yet, please follow the instructions in the section [How to obtain an API Key](#how-to-obtain-an-api-key) to obtain an **API KEY**.
+- Paste the copied API key into the field labeled **API KEY** and click the **ADD** button on the right.
+- If the API key is successfully added, it will be displayed as shown in the image.
 
-**API KEY** の登録が完了したら、検索を掛けます。
-- プラットフォームと検索を掛けたい PUBG NAME を入力して、右側の**SEARCH**を押下してください。
-- また、プラットフォーム上部の **TOURNAMENT** を押下すると、過去に行われた全ての公式大会のマップ分析を行えます。
+Once you have registered your API key, you can perform a search:
+- Enter the platform and the PUBG NAME you want to search for, and click the **SEARCH** button on the right.
+- Additionally, by clicking on **TOURNAMENT** at the top of the platform, you can perform map analysis for all previous official tournaments.
 
-押下したら、[試合一覧ページ](#試合一覧ページの使い方)に遷移します。
+After clicking, you will be redirected to the [Match List page](#how-to-use-the-match-list-page).
 
-#### APIKEYの発行方法
-[PUBG Developer Portal](https://developer.pubg.com/)で API Key を取得します。  
- **GET YOUR OWN API KEY**というところを押して、言われた通りに進めていき、会員登録(無料)をします。(英語のサイトですが、そこまで難しい操作はありません)  
- 最終的に、下記のようなページにいくので、**API KEY** と書かれているところの文字列をコピーしておいてください。   
+#### How to obtain an API Key
+To obtain an API Key, go to the [PUBG Developer Portal](https://developer.pubg.com/).
+Click on **GET YOUR OWN API KEY** and follow the instructions to sign up (it's free). (The website is in English, but the process is not too complicated.)
+Eventually, you will reach a page similar to the one below. Copy the string labeled **API KEY**:
 ![pubg-apikey](https://raw.githubusercontent.com/KagiJPN/pubg-bluezone-predictor/master/docs/resource/img/pubg-apikey.JPG)
 
-##### tips
-本ツールも API Key は複数登録可能です。  
-[PUBG Developer Portal](https://developer.pubg.com/)のアカウント１つで最大5つまで **API Key** を発行することが出来ます。  
-5つ発行して登録することをお勧めします。  
+##### Tips
+You can register multiple API Keys for this tool.
+With one account on the [PUBG Developer Portal](https://developer.pubg.com/), you can generate up to 5 **API Keys**.
+It is recommended to generate and register all 5 keys.
 
-### 試合一覧ページの使い方
-正常な値で遷移されたら、このような画面に飛びます。  
+### How to use the Match List page
+If the transition is successful, you will land on a screen like this:
 ![matches-page](https://raw.githubusercontent.com/KagiJPN/pubg-match-replayer/master/docs/img/replayer2.JPG)
 
-- 自分が分析したい試合を選んで、 **MAP ANALYZE** を押下してください。
+- Select the match you want to analyze and click **MAP ANALYZE**.
 
-### MAP分析ページの使い方
-このページが本ツールのメイン画面となります。  
-今のところ、大きく分けて2つの機能があります。  
+### How to use the MAP Analysis page
+This page is the main screen of the tool.
+Currently, there are two main functions:
+- [Confirm Landing Locations (LandingLocation)](#confirm-landing-locations-landinglocation)
+- [Confirm Positions (Replay)](#confirm-positions-replay)
 
-- [初動降り確認(LandingLocation)](#初動降り確認(LandingLocation))
-- [ポジション確認(Replay)](#ポジション確認(Replay))
+#### Confirm Landing Locations (LandingLocation)
+This screen is displayed first.
+The numbers shown are
 
-#### 初動降り確認(LandingLocation)
-この画面が一番最初に表示されます。  
-表示されている番号と、右側のリストのプレイヤーが紐づいています。  
-一番最初に降下した地点を表示しています。  
+ associated with the players in the list on the right.
+It displays the location where each player first landed.
 ![landing-location-page](https://raw.githubusercontent.com/KagiJPN/pubg-match-replayer/master/docs/img/replayer3.JPG)
 
-#### ポジション確認(Replay)
-画面右上の **Replay** を押下することで画面を切り替えることが出来ます。  
-MAP上部のスライダーを動かすことで、試合の時間を進めたり戻したりすることが出来ます。  
-その時間にどのプレイヤーがどこにいるかを確認することが出来ます。  
-※ スライダー下の赤い線は各フェーズが切り替わった時間を表示しています。  
-※ スライダー上の武器アイコン及びドクロアイコンは、自身がキル・デスした時間を表示しています。  
-※ 各アイコンをクリックすることでその時間にスキップ出来ます。 
+#### Confirm Positions (Replay)
+You can switch between screens by clicking **Replay** in the upper right corner.
+By moving the slider at the top of the map, you can advance or rewind the match time.
+You can see the positions of each player at a specific time.
+*Note: The red line below the slider indicates the time when each phase changes.
+*Note: The weapon and skull icons on the slider indicate the time of your own kills and deaths.
+*Clicking each icon allows you to skip to that specific time.
 ![replay-page](https://raw.githubusercontent.com/KagiJPN/pubg-match-replayer/master/docs/img/replayer4.JPG)
 
-Replayでは２つオプションがあります。
-各ボタンを押下することで設定の ON/OFF を切り替えることが出来ます。
-- [isDead](#isDead)
-- [TrackingLine](#TrackingLine)
+In Replay, there are two options:
+You can toggle the settings ON/OFF by clicking each button.
+- [isDead](#isdead)
+- [TrackingLine](#trackingline)
 
 ##### isDead
-こちらは一番最初に設定されています。  
-こちらの設定が ON になっていると、プレイヤーが死んだ場合MAPに表示されなくなります。  
-OFF にすると死んだ位置がMAPに表示されたままになります。  
+This setting is enabled by default.
+When this setting is ON, the player's position will no longer be displayed on the map after they die.
+When it is OFF, the position of the player who died will still be displayed on the map.
 ![isDead](https://raw.githubusercontent.com/KagiJPN/pubg-match-replayer/master/docs/img/replayer5.JPG)
 
 
 ##### TrackingLine
-こちらの設定を ON にすると、プレイヤーが通った道に線を表示させることが出来ます。  
-注意点としてこの設定を ON にした後に、画面右側のリストから表示させたいチームをクリックすることで表示させることが出来ます。  
-このオプションは処理が少し重いため、最大6チームまでしか設定出来なくしています。(要望があれば変更する可能性あり)  
+When this setting is ON, a line representing the path taken by the player will be displayed on the map.
+Please note that after enabling this setting, you can display the desired team by clicking on it in the list on the right.
+Due to performance considerations, this option is limited to a maximum of 6 teams. (This limit may be changed based on user feedback.)
 ![TrackingLine](https://raw.githubusercontent.com/KagiJPN/pubg-match-replayer/master/docs/img/replayer6.JPG)
 
-#### other
-その他に便利な機能がいくつか存在します。（今後アップデートで増えることもあり）  
-- [自動再生](#自動再生)
-- [スクリーンショット](#スクリーンショット)
+#### Other
+There are several other useful features available (more may be added in future updates).
+- [Auto Replay](#auto-replay)
+- [Screenshot](#screenshot)
 
-##### 自動再生
-スライダーを一定間隔のスピードで自動で動かすことが出来ます。  
-スライダー右側のボタンを押下することで再生が開始し、もう一度押すことでストップします。  
-さらに右側のスライダーは速度倍率になります(デフォルトは6倍速)  
-※ 下記画像を参照  
-![AutoReplay](https://raw.githubusercontent.com/KagiJPN/pubg-match-replayer/master/docs/img/replayer7.JPG)  
+##### Auto Replay
+You can automatically move the slider at a constant interval.
+Click the button on the right side of the slider to start playback, and click it again to stop.
+The slider on the right side controls the playback speed (default is 6x).
+*Refer to the image below:
+![AutoReplay](https://raw.githubusercontent.com/KagiJPN/pubg-match-replayer/master/docs/img/replayer7.JPG)
 
-##### スクリーンショット
-![screenshot](https://raw.githubusercontent.com/KagiJPN/pubg-match-replayer/master/docs/img/replayer8.JPG)  
-マップ右上にあるスクリーンショットボタンを押下することで、マップ画像をダウンロードすることができます。  
-※ この機能は最適化されていないため少し時間が掛かることがあります
+##### Screenshot
+![screenshot](https://raw.githubusercontent.com/KagiJPN/pubg-match-replayer/master/docs/img/replayer8.JPG)
+By clicking the screenshot button in the upper right corner of the map, you can download a screenshot of the map.
+*Please note that this feature may take some time to process as it is not yet optimized.
 
-## 最後に
-分かりづらい説明も多々あると思います。  
-なにか分からないことがありましたら、私のディスコードまでお気軽にご連絡ください！
+## Finally
+There may be some confusing explanations.
+If you have any questions, feel free to contact me on [my twitter](https://twitter.com/KagiJPN)!
 
-改善案や提案なども随時受け付けております。   
-細かいことや小さいことでも構いません！検討したうえで反映させて頂きます！  
-より良い, 使いやすいツールにアップデートするためにも、ぜひともご協力のほどよろしくお願い申し上げます！
+We also welcome suggestions and feedback.
+No matter how small or detailed, we will consider and incorporate them to make the tool better and more user-friendly.
+Thank you for your cooperation in updating and improving this tool!
