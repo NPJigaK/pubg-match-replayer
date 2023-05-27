@@ -1,7 +1,7 @@
 # pubg-match-replayer
+※ 日本の方向けのドキュメントは[こちら](https://github.com/KagiJPN/pubg-match-replayer/blob/master/README_JP.md)！
 
-This tool is a PC-oriented web application intended for analyzing map information from PLAYERUNKNOWN'S BATTLEGROUNDS matches.
-
+This tool is a PC-oriented web application intended for analyzing map information from PLAYERUNKNOWN'S BATTLEGROUNDS matches.  
 You can use this tool from [here](https://kagijpn.github.io/pubg-match-replayer/top/).
 
 ## Recommended Environment  
