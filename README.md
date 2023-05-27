@@ -30,7 +30,7 @@ After clicking, you will be redirected to the [match list page](#how-to-use-the-
 
 #### APIKEY Issuance Procedure
 You will obtain the API Key from the [PUBG Developer Portal](https://developer.pubg.com/).  
-Click on **GET YOUR OWN API KEY** and proceed as instructed, registering for a membership (free of charge). (While the site is in English, it does not involve any complex operations)  
+Click on **GET YOUR OWN API KEY** and proceed as instructed, registering for a membership (free of charge).  
 Ultimately, you will reach a page like the one below, where you should copy the string where it says **API KEY**.   
 ![pubg-apikey](https://raw.githubusercontent.com/KagiJPN/pubg-bluezone-predictor/master/docs/resource/img/pubg-apikey.JPG)
 
