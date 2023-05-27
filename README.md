@@ -108,3 +108,6 @@ By clicking the screenshot button on the upper right of the map, you can downloa
 While some explanations may be hard to understand, if there is anything you don't understand, please don't hesitate to contact [me via Twitter](https://twitter.com/KagiJPN)!
 
 We're always open to suggestions and improvements. No matter how small or trivial they might seem, we'll consider each one and strive to incorporate them to make this tool better and more user-friendly. We look forward to your continued cooperation!
+
+## License
+This content is released under the [Apache License 2.0](https://github.com/KagiJPN/pubg-match-replayer/blob/master/LICENSE). 
