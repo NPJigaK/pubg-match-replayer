@@ -105,6 +105,6 @@ By clicking the screenshot button on the upper right of the map, you can downloa
 ※ This feature is not optimized and may take a little time.
 
 ## Contributing
-While some explanations may be hard to understand, if there is anything you don't understand, please don't hesitate to contact me via Twitter!
+While some explanations may be hard to understand, if there is anything you don't understand, please don't hesitate to contact [me via Twitter](https://twitter.com/KagiJPN)!
 
 We're always open to suggestions and improvements. No matter how small or trivial they might seem, we'll consider each one and strive to incorporate them to make this tool better and more user-friendly. We look forward to your continued cooperation!
